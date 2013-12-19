@@ -17,24 +17,5 @@
 # limitations under the License.
 #
 
-windows_zipfile "c:/" do
-  source node['xd7']['url']
-  action :unzip
-  not_if {::File.exists?("c:/XenDesktop7_1")}
-  not_if {reboot_pending?}
-end
-
-batch "XD7 CRTL" do
-  code <<-EOH
-  node['ctrl']['install'] 
-  EOH
-  not_if {::File.exists?("C:/Program Files/Citrix/Broker/Service/BrokerService.exe")}
-  not_if {reboot_pending?}
-end
-
-
-# if feature installs, schedule a reboot at end of chef run
-windows_reboot 60 do
-  reason 'cause chef said so'
-  only_if {reboot_pending?}
-end 
+default['xd7']['url'] = "https://dl.dropboxusercontent.com/u/36379525/XD71.zip"
+default['ctrl']['install'] = "c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL"
