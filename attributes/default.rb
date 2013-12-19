@@ -18,4 +18,3 @@
 #
 
 default['xd7']['url'] = "https://dl.dropboxusercontent.com/u/36379525/XD71.zip"
-default['ctrl']['install'] = "c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL"

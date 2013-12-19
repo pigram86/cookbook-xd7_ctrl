@@ -26,7 +26,7 @@ end
 
 batch "XD7 CRTL" do
   code <<-EOH
-  node['ctrl']['install'] 
+  c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL
   EOH
   not_if {::File.exists?("C:/Program Files/Citrix/Broker/Service/BrokerService.exe")}
   not_if {reboot_pending?}
