@@ -18,3 +18,5 @@
 #
 
 default['xd7']['url'] = "https://dl.dropboxusercontent.com/u/36379525/XD71.zip"
+default['xd7']['dir'] = "c:/XenDesktop7_1"
+default['ctrl']['srv'] = "C:/Program Files/Citrix/Broker/Service/BrokerService.exe"

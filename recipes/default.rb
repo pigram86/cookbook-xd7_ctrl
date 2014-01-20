@@ -20,15 +20,15 @@
 windows_zipfile "c:/" do
   source node['xd7']['url']
   action :unzip
-  not_if {::File.exists?("c:/XenDesktop7_1")}
+  not_if {::File.exists?(node['xd7']['dir'])}
   not_if {reboot_pending?}
 end
 
-batch "XD7 CRTL" do
+batch "XD7 CTRL" do
   code <<-EOH
   c:\\XenDesktop7_1\\x64\\XenDesktopSetup\\XenDesktopServerSetup.exe /quiet /COMPONENTS CONTROLLER /CONFIGURE_FIREWALL
   EOH
-  not_if {::File.exists?("C:/Program Files/Citrix/Broker/Service/BrokerService.exe")}
+  not_if {::File.exists?(node['ctrl']['srv'])}
   not_if {reboot_pending?}
 end
 
